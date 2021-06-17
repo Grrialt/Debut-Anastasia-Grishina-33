@@ -1553,6 +1553,12 @@ textarea {
 
 /*================ #Basic Styles ================*/
 
+#shopify-section-hero-1 {
+    *zoom: 1;
+    max-width: 50%;
+    margin: 0 auto;
+}
+
 .page-width {
     *zoom: 1;
     max-width: 50%;
