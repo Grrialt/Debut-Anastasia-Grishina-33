@@ -1553,6 +1553,10 @@ textarea {
 
 /*================ #Basic Styles ================*/
 
+.custom-width {
+    margin: 0 auto;
+}
+
 .page-half-width {
     *zoom: 1;
     max-width: 50%;
