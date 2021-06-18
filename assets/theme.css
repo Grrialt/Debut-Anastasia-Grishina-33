@@ -1553,15 +1553,21 @@ textarea {
 
 /*================ #Basic Styles ================*/
 
-#shopify-section-hero-1 {
+.page-half-width {
     *zoom: 1;
     max-width: 50%;
     margin: 0 auto;
 }
 
+.page-half-width::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
 .page-width {
     *zoom: 1;
-    max-width: 50%;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
