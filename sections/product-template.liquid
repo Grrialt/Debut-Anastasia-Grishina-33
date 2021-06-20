@@ -271,6 +271,7 @@
 
         <div class="product-single__description rte">
           {{ product.description }}
+          {% include 'product_tabs' %}
         </div>
 
         {% if section.settings.show_share_buttons %}

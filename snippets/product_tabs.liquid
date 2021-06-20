@@ -1,0 +1,28 @@
+{% assign prodMf = product.metafields %}
+{% assign tab_titles = prodMf.product_tabs.tab_title %}
+{% assign tab_contents = prodMf.product_tabs.tab_content %}
+
+{% if tab_titles.size > 0 and tab_contents.size > 0 %}
+  {{ 'tabs.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'tabs.min.js' | asset_url }}"></script>
+
+  <div class="js-tabs" id="tabs">
+      <ul class="js-tabs__header">
+         {% for i in (0..5) %}
+        	{% if tab_contents[i] != blank %}
+        	<li><a href="#" class="js-tabs__title" id="js-tabs__title">{{ tab_titles[i] }} {% include 'icon-plus' %}</a></li>
+            <div class="js-tabs__content">{{ tab_contents[i] }}</div>
+            {% else %}
+              {% continue %}
+            {% endif %}
+         {% endfor %}
+      </ul>
+  </div>
+
+  <script>
+    var tabs = new Tabs({
+        elem: "tabs",
+        open: 0
+    });
+  </script>
+{% endif %}
