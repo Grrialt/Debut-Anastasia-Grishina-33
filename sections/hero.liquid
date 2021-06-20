@@ -11,10 +11,50 @@
     }
   {%- endstyle -%}
 {%- endif -%}
+
 <div data-section-id="{{ section.id }}" data-section-type="hero-section">
+  
+  {% case section.settings.custom_width_range %}
+    {% when 0 %}
+      {%- style -%}
+       .custom-width{
+ 		 visibility: hidden;
+		}
+      {%- endstyle -%}
+    {% when 10 %}
+      {%- assign custom_width_range = 'one-tenth' -%}
+    {% when 20 %}
+      {%- assign custom_width_range = 'two-tenths' -%}
+    {% when 30 %}
+      {%- assign custom_width_range = 'three-tenths' -%}
+    {% when 40 %}
+      {%- assign custom_width_range = 'four-tenths' -%}
+    {% when 50 %}
+      {%- assign custom_width_range = 'five-tenths' -%}
+    {% when 60 %}
+      {%- assign custom_width_range = 'six-tenths' -%}
+    {% when 70 %}
+      {%- assign custom_width_range = 'seven-tenths' -%}
+    {% when 80 %}
+      {%- assign custom_width_range = 'eight-tenths' -%}
+    {% when 90 %}
+      {%- assign custom_width_range = 'nine-tenths' -%}
+    {% when 100 %}
+      {%- assign custom_width_range = 'one-whole' -%}
+  {% endcase %}
+  
+  {%- if section.settings.hero_layout == 'custom_width' -%}
+    <div class="custom-width {{ custom_width_range }}">
+  {%- endif -%}
+  
   {%- if section.settings.hero_layout == 'fixed_width' -%}
     <div class="page-width">
   {%- endif -%}
+      
+  {%- if section.settings.hero_layout == 'half_width' -%}
+     <div class="page-half-width">
+  {%- endif -%}
+  
   {%- if section.settings.hero_layout == 'fixed_width' and section.settings.hero_size ==  'adapt' -%}
     {%- assign slide_width = 1090 -%}
     {%- assign min_aspect_ratio = section.settings.image.aspect_ratio | default: 2.0 -%}
@@ -364,8 +404,92 @@
             "zh-TW": "固定寬度"
           },
           "value": "fixed_width"
-        }
+        },
+		{
+          "label": {
+            "cs": "Poloviční šířka",
+            "da": "Halv bredde",
+            "de": "Halbe Breite",
+            "en": "Half width",
+            "es": "Medio ancho",
+            "fi": "Puolileveys",
+            "fr": "Demi-largeur",
+            "it": "Mezza larghezza",
+            "ja": "半値幅",
+            "ko": "반지름",
+            "nb": "Halv bredde",
+            "nl": "Halve breedte",
+            "pl": "Połowa szerokości",
+            "pt-BR": "Meia largura",
+            "pt-PT": "Meia largura",
+            "sv": "Halv bredd",
+            "th": "ครึ่งความกว้าง",
+            "tr": "Yarı genişlik",
+            "vi": "Một nửa chiều rộng",
+            "zh-CN": "一半的寬度",
+            "zh-TW": "一半的寬度"
+          },
+          "value": "half_width"
+        },
+        {
+          "label": {
+            "cs": "Vlastní šířka",
+            "da": "Brugerdefineret bredde",
+            "de": "Benutzerdefinierte Breite",
+            "en": "Custom width",
+            "es": "Ancho personalizado",
+            "fi": "Mukautettu leveys",
+            "fr": "Largeur personnalisée",
+            "it": "Larghezza personalizzata",
+            "ja": "カスタム幅",
+            "ko": "맞춤 너비",
+            "nb": "Egendefinert bredde",
+            "nl": "Aangepaste breedte",
+            "pl": "Szerokość niestandardowa",
+            "pt-BR": "Largura personalizada",
+            "pt-PT": "Largura personalizada",
+            "sv": "Anpassad bredd",
+            "th": "ความกว้างที่กำหนดเอง",
+            "tr": "Özel genişlik",
+            "vi": "Chiều rộng tùy chỉnh",
+            "zh-CN": "自定义宽度",
+            "zh-TW": "自定义宽度"
+          },
+          "value": "custom_width"
+		}
       ]
+    },
+    {
+      "type": "range",
+      "id": "custom_width_range",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": {
+            "cs": "Vlastní šířka",
+            "da": "Brugerdefineret bredde",
+            "de": "Benutzerdefinierte Breite",
+            "en": "Custom width",
+            "es": "Ancho personalizado",
+            "fi": "Mukautettu leveys",
+            "fr": "Largeur personnalisée",
+            "it": "Larghezza personalizzata",
+            "ja": "カスタム幅",
+            "ko": "맞춤 너비",
+            "nb": "Egendefinert bredde",
+            "nl": "Aangepaste breedte",
+            "pl": "Szerokość niestandardowa",
+            "pt-BR": "Largura personalizada",
+            "pt-PT": "Largura personalizada",
+            "sv": "Anpassad bredd",
+            "th": "ความกว้างที่กำหนดเอง",
+            "tr": "Özel genişlik",
+            "vi": "Chiều rộng tùy chỉnh",
+            "zh-CN": "自定义宽度",
+            "zh-TW": "自定义宽度"
+          },
+      "default": 50
     },
     {
       "type": "select",
